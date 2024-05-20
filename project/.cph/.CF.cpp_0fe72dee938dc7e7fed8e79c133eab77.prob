@@ -1,0 +1,1 @@
+{"name":"Local: CF","url":"c:\\Users\\alok5\\OneDrive\\Desktop\\vs\\project\\CF.cpp","tests":[{"id":1715188512489,"input":"6\nabc\nacb\nbac\nbca\ncab\ncba","output":"YES\nYES\nYES\nNO\nNO\nYES"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\alok5\\OneDrive\\Desktop\\vs\\project\\CF.cpp","group":"local","local":true}
