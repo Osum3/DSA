@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div class="container"
+        style="background-color: rgb(52, 49, 49); color:white; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <p>try and guess a random number between 1 and 100</p>
+        <p>you have 10 attempts</p>
+        <h2>Guess the number</h2>
+        <input type="number" id="inpt" style="background-color: gray;">
+    <br>
+        <button style="height:40px; width: 100px; background-color: black; color: white;" id='sub'>Submit Guess</button>
+        <p class="prev">previous guess</p>
+        <p class="guess">guess the remaning</p>
+
+    </div>
+</body>
+<script>
+    const button=document.querySelector('#sub');
+    button.addEventListener('click',function(){
+        const num=Math.floor(Math.random()*100+1);
+        // console.log(num);
+        const inp=parseInt(document.querySelector('#inpt').value);
+        if(!isNaN(inp)){
+        alert('enter a valid number')
+        return ;
+    }
+
+
+
+
+    })
+   
+</script>
+</html>

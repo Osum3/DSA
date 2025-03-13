@@ -1,0 +1,54 @@
+
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body style="text-align: center; background-color: gray;">
+      <!-- <form class="form" > -->
+<!-- <div class="form"> -->
+        <h1> BMI Calculator</h1>
+        <p style="display: inline;">Height in CM:</p>
+        <input type="number" id="height" >
+        <br>
+        <br>
+        <p style="display: inline-block;">Weight  in KG:</p>
+        <input type="number" id="weight">
+        <br>
+
+        <button class="button"> Calculate</button>
+        
+  <!-- </form> -->
+    <div class="result"></div>
+
+    </body>
+    <script>
+        const form=document.querySelector('.form')
+        const calculate=document.querySelector('.button')
+        calculate.addEventListener('click',function(e){
+            e.preventDefault()
+
+            const hei=parseInt(document.querySelector('#height').value)
+            const wei=parseInt(document.querySelector('#weight').value)
+            const res=document.querySelector('.result')
+            if(hei==='' || hei<0 || isNaN(hei)){
+                res.innerHTML=`INVALID height`;
+                return ;
+            }
+            if(wei==='' || wei<0 || isNaN(wei)){
+                res.innerHTML=`INVALID wieght`;
+                return ;
+
+            }
+            else{
+                const ans=(wei/((hei*hei)/10000)).toFixed(2)
+                res.innerHTML=`BMI is ${ans}`
+            }
+
+        })
+
+
+
+    </script>
+    </html>

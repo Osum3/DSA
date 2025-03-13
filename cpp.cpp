@@ -1,171 +1,231 @@
-#include <iostream>
-using namespace std;
+#include<iostream>
 #include<vector>
+using namespace std;
 
-bool check( vector<int> name,int n,int k, int mid){
-        int sum=0;
-        int count=1;
-        for(int i=0;i<n;i++){
-            if(sum+name[i] <= mid){
-                sum+=name[i];
-            }
-            else{
-                count++;
-                if(count>k || name[i]>mid){
-                    return false;
-                }
-                sum=name[i];
-            }
+class Node{
+    public:
+   int data;   
+   Node  *next;  
+    Node(int n){
+        data=n;
+       next=nullptr;
+
+    }
+
+   
+
+    
+    
+
+  
+    
+};
+    Node* inserted(vector<int> & v){
+        Node* head=new Node(v[0]);
+        Node* mover=head;
+        for(int i=1;i<v.size();i++){
+            Node* temp=new Node(v[i]);
+            mover->next=temp;
+            mover = temp;
         }
-        return true;
-}
+        return head;
+               
+             
+
+                
+    }
+
+    // search in Node
+    int search(Node* &head ,int num){
+        int count=0;
+            Node* temp=head;
+            while(temp){
+                if(temp->data == num){
+                    return count;
+                }
+                count++;
+                temp=temp->next;
+            }
+            return 0;
+
+    }
+
+    //delete in LL
+
+    Node* del(Node* head,int num){
+
+            
+         
+            Node* temp=head;
+            // int i=1;
+            // Node* prev;
+            while(temp){
+
+                if(temp->next->data == num ){
+                    temp->next=temp->next->next;
+                    
+                    break;
+
+
+                }
+                temp=temp->next;
+
+            }
+            return head;
+
+    }
+    // insertn at the middle
+     Node* ins(Node* &head,int index,int num){
+
+        if(index==1){
+            Node* ele= new Node(num);
+            Node* temp=head;
+
+            ele->next=temp->next;
+        head =ele;
+
+           
+            return head;
+        }
+
+           
+            Node* temp=head;
+            int i=1;
+
+           
+            while(temp){
+               i++;
+
+                if(i==index ){
+                 Node* elm=new Node(num);
+                    elm->next=temp->next;
+                    temp->next=elm;
+
+                    break;
+
+
+                }
+           
+                temp=temp->next;
+
+            }
+            return head;
+
+    }
+
+
+    //  print a linked list 
+    void print(Node* &head){
+
+        Node* temp=head;
+        while(temp!=NULL){
+            cout<<temp->data;
+            temp=temp->next;
+            cout<<" ";
+
+        }
+        
+    }
+    // void dlt() {
+    //     * temp =node->next->next;
+    //     node->next=temp;
+    //     node->val=node->next->val;
+    //     node->next=NULL;
+        
+
+    // }
+    Node* sort(Node* head){
+        Node* temp=head;
+        Node* zerohead=new Node(-1);
+        Node* zero=zerohead;
+        Node* onehead=new Node(-1);
+        Node* one=onehead;
+
+        Node* twohead=new Node(-1);
+        Node* two=twohead;
+        
+        int c=0;
+        while(temp){
+            if(temp->data == 0){
+               
+                zero->next=temp;
+                zero=zero->next;
+
+
+             
+                
+            }if(temp->data == 1){
+                one->next=temp;
+                one=one->next;
+
+            }if(temp->data == 2){
+                two->next=temp;
+                two=two->next;
+            }
+            temp=temp->next;
+        }
+        
+       
+        zero->next=onehead->next;
+        one->next=twohead->next;
+
+        return zerohead->next;
+
+    }
+    Node* pali(Node* head){
+            Node* fast=head;
+            Node* slow=head;
+            
+        while(fast->next!=NULL && fast->next !=NULL){
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+
+
+        Node* prev =slow;
+        Node* temp=prev->next;
+        // while(temp->next!=NULL){
+        //     Node* rev=temp->next;
+        //     temp->next=prev;
+        //             prev=temp;
+        //             temp=rev;  
+
+        // }
+        
+        
+        // print(prev);
+
+            
+
+    }
+        
+
+
+
 
 int main(){
-//  vector<int> name{2, 1, 5, 6, 2, 3};
-// int k=2;
-
-// int start=0;
-// int n=name.size();
-// int end=0;
-// for(int i=0;i<name.size();i++){
-//         end+=name[i];
-// }
-
-// int mid=(start+end)/2;
-// int ans=-1;
-// while(start<=end)
-// {
-//     if (check(name,n,k,mid)){
-//         ans=mid;
-//         end=mid-1;
-//     }
-//     else{
-//         start=mid+1;
-//     }
-//     mid=(start+end)/2;
-
-// }
-// cout<<ans;
-// vector<int> ans;
-// vector<int> arr1={0,1,3,12,0,0,1,8};
-// int n=arr1.size();
-// for(int i=0;i<n-1;i++){
-//     int a=arr1[i];
-//     for(int j=i;j<n-1-i;j++){
-//         if(arr1[j]==0){
-//             swap(arr1[j],arr1[j+1]);
-//         }
         
-//     }
-    
-// }
-// for(int i=0;i<n;i++){
-//     cout<<arr1[i]<<" "; 
-    
-// }
-// cout<<endl;
+    vector<int> v={1,2,3,4,5,6};
+       Node* head=inserted(v);
+       head=pali(head);
+    //    print(head);
 
-    // vector<int> a{1};
-    // vector<int> b{};
-
-    // int i=0;int j=0;
-    // int m=1; int n=0;
-    // while(i<3 && j<n){
-    //     if(a[i]<b[j]){
-    //         i++;
-    //     }
-    //     else if(a[i]>b[j]){
-    //         swap(a[i],b[j]);
-    //         i++;
-    //     }
-    //     else{
-    //         i++;
-    //     }
-    // }
+    //    del(head,2);
+    //    print(head);
    
-    // while(j<n){
-    //     a[i]=b[j];
-    //     i++;
-    //     j++;
-    // }
-    // for (int j=0;j<a.size();j++){
-    //     cout<<a[j]<<" ";
-    // }
-vector<int> v1 = {1, 2, 3, 4, 5,6};
-vector<int> v2 = {1, 2, 3, 4, 5};
-vector<int> ans;
-int m=max(v1.size(),v2.size());
-int n=min(v1.size(),v2.size());
-
-cout<<m<<endl;
-int carry=0;
-for(int i=4;i>=0;i--){
- int sum=0;
- sum=v1[i]+v2[i];
- if(sum>=9){
-    int lol=sum-10;
-    ans[i]=lol;
-    carry=1;
- }
- else{
-    ans[i]=sum;
-    carry=0;
- }
-}
-if(carry!=0){
-    ans.insert(ans.begin(),1);
-}
-
-  
-
-  // Print the vector
-  for (int k = 0; k < ans.size(); k++) {
-    cout << ans[k] << " ";
-  }
-
-  
+// ***dont ever temper with head never  also create temp one ** 
 
 
 
+       // this is also a way to print it
+    //    while(temp!=NULL){
+    //     cout<<temp->data<<" ";
+    //     temp=temp->next;
+    //    }
 
-
-
-
-// int arr2[3]={2,5,6};
-// int len2=3;
-// int len1=5;
-
-// int m=3;
-// int n=3;
-
-// int i=0;
-// int j=0;
-
-// while(i<3 && j<3){
-//     if(arr1[i]<arr2[j]){
-//         i++;
-//     }
-//     else  if(arr1[i]>arr2[j]){
-//         swap(arr1[i],arr2[j]);
-//         i++;
-//     }
-//     else{
-//         swap(arr1[i+1],arr2[j]);
-//         i++; 
-
-//     }
-// }
-
-
- 
-//  while(j<3){
-//      arr1[j]=arr2[j];
-// j++;
-//  }
-
-// for(int j=0;j<ans.size();j++){
-//     cout<<ans[j]<<" ";
-// }
+    // head=ins(head,1,1);
+    // print(head);
+    
 
 
 }

@@ -2,8 +2,16 @@
 #include<bits/stdc++.h>
 
 using namespace std;
-
 int main(){
+    multiset<int> m={-7,-8,7,5,7,1,6,0};
+   auto it=m.find(7);
+   m.erase(it);
+    for( auto a:m){
+        cout<<a<<endl;
+    }
+}
+
+
 // g++ file name with extension
 // a.exe then hit tab and press enter
 
@@ -180,4 +188,4 @@ int main(){
 // }
 // long long a=23;
 
-
+// ------ rbegin return the last element of the of any STL data structure ---------

@@ -1,0 +1,24 @@
+ <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body style="text-align: center; background-color: black; COLOR:WHITE">
+    <H3>your local time</H3>
+    <div class="time" style=" font-size:large; font-weight: 600; height: 40px; width: 100px; background-color: orange; margin: auto; border-radius: 5px; color:black; display:flex;
+        justify-content: center; align-items: center;">
+    </div>
+
+        
+    </body>
+    <script>
+       
+        setInterval(()=>{ const ctime= new Date().toLocaleTimeString()
+            document.querySelector('.time').innerHTML=ctime;},1000)
+        function timer(){
+           
+        }
+
+    </script>
+    </html>
